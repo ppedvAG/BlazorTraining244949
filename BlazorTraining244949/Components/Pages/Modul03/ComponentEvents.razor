@@ -1,0 +1,25 @@
+﻿@page "/ce"
+
+<h3>ComponentEvents</h3>
+<button @onclick="click"></button>
+@RendererInfo.IsInteractive
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+    }
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Thread.Sleep(10000);
+    } 
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
+    void click()
+    {
+        
+    }
+}
