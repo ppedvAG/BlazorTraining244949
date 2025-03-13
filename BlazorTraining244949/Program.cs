@@ -1,10 +1,15 @@
 using BlazorTraining244949.Components;
+using BlazorTraining244949.Components.Pages.Modul04;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<ToDoVM>();
+
+
 
 var app = builder.Build();
 
