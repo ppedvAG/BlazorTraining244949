@@ -1,0 +1,32 @@
+﻿@page "/Element"
+<h3>ElementAttribute</h3>
+<input @bind="eingabe"/><br />
+Adhoc Bindung 
+<input @bind="eingabe" @bind:event="oninput" />
+<br />
+
+<br />
+<input value="@eingabe" @oninput="(_)=>eingabe=_.Value?.ToString()"></input><br />
+
+<div class="btn btn-danger" @onclick="click">click</div>
+<div class="btn btn-danger" @onclick="(_)=>click2(1,_)">click</div>
+<br />
+<input @ref="sepp" />
+
+@eingabe
+@code {
+    string eingabe;
+    ElementReference sepp;
+    void click()
+    {
+        eingabe = "";
+    }
+    void click2(int id,MouseEventArgs args)
+    {
+        if (eingabe=="hannes")
+        {
+            sepp.FocusAsync();
+        }
+        eingabe = "";
+    }
+}
