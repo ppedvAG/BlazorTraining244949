@@ -1,0 +1,23 @@
+﻿@page "/navaa"
+@page "/navab"
+@inject NavigationManager navigationManager
+<h3>Navi</h3>
+
+<a href="navaa">a</a><br />
+<a href="navab">b</a>
+<br />
+<button class="btn btn-dark" @onclick="B">B</button>
+
+@code {
+    void B()
+    {
+        navigationManager.NavigateTo("navab");
+        navigationManager.LocationChanged += NavigationManager_LocationChanged;
+
+
+    }
+    void NavigationManager_LocationChanged(object sender, LocationChangedEventArgs e)
+    {
+        Console.WriteLine("Location changed");
+    }
+}
