@@ -22,7 +22,10 @@
                 @foreach (var item in Liste2)
                 {
                     <li class="list-group-item  " @key="@item.CustomerId">
-                        @item.CustomerId @item.CompanyName
+                        <a href="/kundenedit/@item.CustomerId" type="button" class="btn btn-primary">
+                            @item.CustomerId <span class="badge text-bg-secondary">@item.Orders.Count</span>
+                        </a>
+                         @item.CompanyName
                     </li>
                 }
             </ul>
