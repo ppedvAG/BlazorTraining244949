@@ -1,0 +1,47 @@
+﻿@page "/db2"
+@using Models
+@inject NorthwindContext VM
+<h3>Kunden</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form method="post" @onsubmit="suche">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="suche" @bind="eingabe">
+                    <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i> search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                <li class="list-group-item active">Kunden</li>
+
+                @foreach (var item in Liste2)
+                {
+                    <li class="list-group-item  " @key="@item.CustomerId">
+                        @item.CustomerId @item.CompanyName
+                    </li>
+                }
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+@code {
+    string eingabe = "";
+    List<Customer> Liste = new List<Customer>();
+    List<Customer> Liste2 = new List<Customer>();
+    protected override void OnInitialized()
+    {
+        Liste = VM.Customers.ToList();
+        suche();
+    }
+    void suche()
+    {
+        Liste2 = Liste.Where(x => x.CompanyName.Contains(eingabe)).ToList();
+    }
+}
