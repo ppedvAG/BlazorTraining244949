@@ -19,7 +19,8 @@ appsettings
 }	
 
 Startup.cs
-services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Northwind")));
+builder.Services.AddDbContext<NorthwindContext>(o=>o.UseSqlServer(builder.Configuration.GetConnectionString("Northwind")));
+
 
 
 
