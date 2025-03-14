@@ -1,0 +1,46 @@
+﻿@page "/person/edit/{id:int}"
+@page "/p"
+<h3>Person Edit</h3>
+<EditForm Model="VM" OnSubmit="save">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+
+
+
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Name der Person</label>
+        <div class="col-sm-10">
+            <InputText id="Name" class="form-control" @bind-Value="VM.Name"></InputText>
+            <ValidationMessage For="@(() => VM.Name)"></ValidationMessage>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">gefühlte Alter der Person</label>
+        <div class="col-sm-10">
+            <InputNumber  id="Name" class="form-control" @bind-Value="VM.Alter" step="0.1"></InputNumber>
+            <ValidationMessage For="@(() => VM.Alter)"></ValidationMessage>
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label class="col-sm-2 col-form-label">Geb Datum</label>
+        <div class="col-sm-10">
+            <InputDate id="Name" class="form-control" @bind-Value="VM.GebDat"></InputDate>
+            <ValidationMessage For="@(() => VM.GebDat)"></ValidationMessage>
+        </div>
+    </div>
+    <button class="btn btn-outline-primary" type="submit">save</button>
+    <ValidationSummary></ValidationSummary>
+</EditForm>
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    Person VM = new Person();
+    void save(EditContext ctx)
+    {
+        if (ctx.Validate())
+        {
+
+        }
+    }
+}
