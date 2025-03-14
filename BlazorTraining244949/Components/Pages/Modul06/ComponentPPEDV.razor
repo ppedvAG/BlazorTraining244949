@@ -1,0 +1,32 @@
+﻿<h3>ComponentPPEDV @Benutzer @Benutzername</h3>
+
+<div @attributes="@Alles">
+    @Wert
+    @ItemContent
+</div>
+<div>
+    @EmptyContent
+</div>
+
+@code {
+    [CascadingParameter]
+    public string Benutzername { get; set; }
+
+    [CascadingParameter(Name="Benutzer")]
+    public string Benutzer { get; set; }
+    [Parameter]
+    public int Wert { get; set; }
+    [Parameter]
+    [EditorRequired]
+    public string Wert2 { get; set; }
+    [Parameter]
+    public RenderFragment ChildContent { get; set; } //Konvention
+
+    [Parameter]
+    public RenderFragment ItemContent { get; set; } 
+    [Parameter]
+    public RenderFragment EmptyContent { get; set; }
+
+    [Parameter(CaptureUnmatchedValues =true)]
+    public Dictionary<string,object> Alles { get; set; }
+}

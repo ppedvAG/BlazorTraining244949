@@ -1,0 +1,20 @@
+﻿@page "/uc"
+<h3>UseComponent</h3>
+<CascadingValue Value='@("Hannes")' Name="Benutzer">
+    <CascadingValue Value='@("Hannes")'>
+        <ComponentPPEDV Wert="42" style="background-color:crimson" Wert2="42">
+
+            <ItemContent>
+                <p>
+                    lorem ipsum
+                    <input class="form-control" />
+
+                </p>
+            </ItemContent>
+            <EmptyContent>No Datat</EmptyContent>
+        </ComponentPPEDV>
+    </CascadingValue>
+</CascadingValue>
+@code {
+
+}
