@@ -1,0 +1,24 @@
+﻿@page "/js"
+@inject IJSRuntime jsRuntime
+<h3>JS</h3>
+<button @onclick="ShowAlert">Show Alert</button>
+<script>
+    window.ppedv=function()
+    {
+    //alert("test");
+    return prompt("test");
+
+
+    }
+
+</script>
+@wert
+@code {
+    string wert;
+     async Task ShowAlert()
+    {
+        // jsRuntime.InvokeVoidAsync("alert", "Hello from Blazor");
+        // jsRuntime.InvokeVoidAsync("ppedv");
+       wert=await jsRuntime.InvokeAsync<string>("ppedv");
+    }
+}

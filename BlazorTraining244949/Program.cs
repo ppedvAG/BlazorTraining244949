@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddRazorPages();
 builder.Services.AddHttpClient();
 builder.Services.AddScoped<ToDoVM>();
 builder.Services.AddSingleton<ChatVM>();
@@ -34,7 +35,7 @@ app.UseHttpsRedirection();
 
 
 app.UseAntiforgery();
-
+app.MapRazorPages();
 app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
