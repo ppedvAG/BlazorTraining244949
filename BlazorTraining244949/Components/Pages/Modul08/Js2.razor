@@ -1,0 +1,19 @@
+﻿@page "/js2"
+@inject IJSRuntime jsRuntime
+<h3>js2</h3>
+<button @onclick="eingabe">eingabe</button>
+@ausgabe
+@code {
+    IJSObjectReference miniruntime;
+    string ausgabe;
+    async Task eingabe()
+    {
+        ausgabe = await miniruntime.InvokeAsync<string>("ppedv");
+       
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        miniruntime = await jsRuntime.InvokeAsync<IJSObjectReference>("import", "./components/pages/modul08/js2.razor.js");
+
+    }
+}
