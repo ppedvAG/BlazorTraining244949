@@ -1,0 +1,23 @@
+﻿@page "/modal"
+<h3>UseModal</h3>
+<ModalPPEDV @ref="modal1" Titel="halllo ppedv" onclick="speichern">
+    Eingabe:<input class="form-control" @bind="eingabe" />
+
+</ModalPPEDV>
+<button type="button" class="btn btn-primary" @onclick="anzeigen">
+    Launch demo modal
+</button>
+@code {
+    ModalPPEDV modal1;
+    string eingabe;
+    public void anzeigen()
+    {
+        modal1.Show();
+    }
+
+    void speichern()
+    {
+        modal1.Show();
+        eingabe = "";
+    }
+}
