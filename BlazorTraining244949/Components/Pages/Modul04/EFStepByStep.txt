@@ -1,0 +1,25 @@
+﻿Package Manager Console
+
+Install-Package Microsoft.EntityFrameworkCore.SqlServer
+Install-Package Microsoft.EntityFrameworkCore.Tools 
+Install-Package Microsoft.EntityFrameworkCore.Design 
+
+
+Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=True
+
+
+Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context NorthwindContext -DataAnnotations -Force
+
+appsettings
+.json
+{
+  "ConnectionStrings": {
+	"Northwind": "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Northwind;Integrated Security=True"
+  }
+}	
+
+Startup.cs
+services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Northwind")));
+
+
+
