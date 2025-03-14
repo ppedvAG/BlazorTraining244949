@@ -1,7 +1,7 @@
 ﻿@page "/person/edit/{id:int}"
 @page "/p"
 <h3>Person Edit</h3>
-<EditForm Model="VM" OnSubmit="save">
+<EditForm EditContext="editContext" OnSubmit="save">
     <DataAnnotationsValidator></DataAnnotationsValidator>
 
     <div class="mb-3 row">
@@ -42,11 +42,18 @@
     public int Id { get; set; }
 
     Person VM = new Person();
+    EditContext editContext;
     void save(EditContext ctx)
     {
         if (ctx.Validate())
         {
 
         }
+    }
+    protected override void OnInitialized()
+    {
+       
+        editContext = new EditContext(VM);
+        editContext.SetFieldCssClassProvider(new BootstrapErrorFixFieldCSSClassProvider());
     }
 }
